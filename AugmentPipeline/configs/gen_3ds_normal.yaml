@@ -1,0 +1,35 @@
+set: val
+multiprocessing: True
+cpu_count: 16
+random_seed: 4
+
+debug: False
+
+data:
+  name: "3DS"
+  path: "/auto/brno2/home/dejvax/ShapeData/Teeth3DS_splits/"
+  save: "./generated"
+  turn_on_save: True
+  max_test: 100
+
+
+noise:
+  is_on: True
+  amp: 0.06
+  freq: 2.8
+
+
+gen:
+  resolution: 64
+  size: [0.10,0.4]
+  shift_mag: 0.35
+  max_num_holes: 6
+
+  bool_method: sdf
+  context_type: relative
+  bbox_scale: 2.0
+  treatment: ["final"] # final, ori | only in OOD
+
+antag:
+  antagonist: False
+  method: separate # together, separate

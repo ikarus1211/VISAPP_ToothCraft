@@ -1,0 +1,34 @@
+wandb_key: # Your key for logging
+set: train
+multiprocessing: True
+cpu_count: 3
+random_seed: 7
+
+debug: False
+
+data:
+  name: "OOD"
+  path: # ./data/models
+  splits: # ./data/s Path to folder where train.txt, val.txt, test.txt are located for splitting dataset into sets
+  save: "./generated/debug"
+  turn_on_save: False
+
+noise:
+  is_on: True
+  amp: 0.06
+  freq: 2.8
+
+gen:
+  resolution: 64
+  size: [0.15,0.50] # Of tooth bounding box
+  shift_mag: 0.66
+  max_num_holes: 3
+
+  bool_method: sdf
+  context_type: relative
+  bbox_scale: 2.0
+  treatment: ["final"] # final, ori | only in OOD
+
+antag:
+  antagonist: False
+  method: separate # together, separate

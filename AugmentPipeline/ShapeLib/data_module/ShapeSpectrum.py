@@ -1,0 +1,3 @@
+class ShapeSpectrum:
+    def __init__(self):
+        ...
