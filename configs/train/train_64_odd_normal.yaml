@@ -1,0 +1,122 @@
+exp_tag: teeth_normal
+
+wandb:
+  key: ## Needs to be initialized by your data
+  project: ## Needs to be initialized by your data
+  entity: ## Needs to be initialized by your data
+  exp_tag: ## Needs to be initialized by your data
+
+antag:
+  is_used: False
+  type: encoder # If atagonist is to be used
+  use_oaf: False
+
+diffusion:
+  class_free: False
+  cfg_dropout: 0.1
+  model: GaussianDiffusion  # !
+  val_model: SpacedDiffusion # !
+  step: 1000 # !
+  model_var_type: FIXED_SMALL # !
+  learn_sigma: False # !
+  sampler: 'second-order' # !
+  model_mean_type: EPSILON # !
+  rescale_timestep: False # !
+  loss_type: MSE # !
+  beta_schedule: 'linear' # !
+  scale_ratio: 1.0 # !
+  diffusion_learn_sigma: False #!
+  respacing: 10 # For Spaced diffusion
+
+net:
+  network: ControlledUNet
+  in_channels: 1
+  model_channels: 64
+  hint_channels: 1
+  num_res_blocks: 3
+  channel_mult: 1,2,2,2
+  attention_type: normal
+  attention_rope: False
+  attention_resolutions:
+  attention_heads: 4
+  unet_activation:
+  weights:
+  controlnet: ContextNet
+  control_weights:
+  sd_locked: True
+
+# !!!
+optimizer:
+  optimizer: Adam
+  lr: 0.0001
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  lr_decay: False
+  weight_decay: 0
+
+  # Scheduler
+  scheduler: Cosine
+  step_size: 600000
+  eta_min: 0.00006
+  decay: 0.666
+  warmup: 1000
+
+data:
+  dataset: TeethDataset
+  class_id: '0'
+  train_file:
+  data_dir: ['data/']
+  collate_fn:
+  input_transform:
+  targer_transform:
+  cache_data: False
+  persistent_workers: False
+  suffix: .npy
+  preload: True
+  log_df: False
+  trunc_distance: 3.0
+
+  bounds: True # If bounds are loaded
+  save_samp: False
+  save_interval: 1
+
+train:
+  debug: False
+  is_train: True
+  max_iter: 900000
+  stat_freq: 100
+  empty_cache_freq: 2500
+  overwrite_weights: False
+  mix_precision: True
+  use_gradient_clip: False
+  gradient_clip_value: 1.0
+  weighted_loss: False
+  checkpoint_freq: 2500 # Model saving freq
+
+val:
+  use_ddim: False
+  frequency: 5000 # !
+  batch_size: 8 # ! If zero specified train batch used
+  max_val_samples: 100
+# Misc
+misc:
+  seed: 123
+
+exp:
+  res: 64
+  representation: tsdf
+  batch_size: 8
+  num_gpus: 1
+  num_workers: 8
+  skip_validate: True
+
+
+hydra:
+  run:
+    dir: exps/${exp_tag}
+  sweep:
+    dir: exps/${exp_tag}
+
+
+
+
