@@ -1,0 +1,12 @@
+hydra-core
+wandb
+scikit-image
+numpy
+tqdm>=4.64,<5.0
+trimesh>=3.20,<5.0
+polyscope>=2.0,<3.0
+matplotlib>=3.7,<4.0
+mesh2sdf>=1.0,<2.0
+noise>=1.2,<2.0
+
+manifold3d>=2.0,<3.0
