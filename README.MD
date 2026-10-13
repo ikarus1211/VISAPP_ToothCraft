@@ -1,3 +1,4 @@
+TODO README
 # VISAPP_ToothCraft
 
 
@@ -100,6 +101,11 @@ Pretrained ToothCraft checkpoints are available on Hugging Face:
 
 Download the checkpoint you want to use and set its path in the corresponding `.yaml` configuration file before evaluation or inference.
 
+## License
+This software is dual-licensed. It is available under the terms of the GNU Affero General Public License v3.0 (AGPL-3.0),
+the full text of which is provided in the LICENSE file. If you wish to use this software under terms other than those of
+the AGPL-3.0, for example as part of a proprietary product or service without the obligation to release your source code,
+a commercial license is available. Please contact the authors.
 
 ## Citation
 

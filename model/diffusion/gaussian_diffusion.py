@@ -1,4 +1,11 @@
+"""
+Adapted from OpenAI's improved-diffusion:
+https://github.com/openai/improved-diffusion
 
+Original work:
+Copyright (c) 2021 OpenAI
+
+"""
 
 import math
 import numpy as np
